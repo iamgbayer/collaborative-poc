@@ -1,0 +1,18 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "start": "lerna run start",
+    "start:client": "yarn workspace @poc/client start",
+    "start:api": "yarn workspace @poc/api start"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.10.5"
+  }
+}
