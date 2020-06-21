@@ -6,7 +6,11 @@
 const WebSocket = require("ws");
 const http = require("http");
 const wss = new WebSocket.Server({ noServer: true });
-const { setupWSConnection } = require("./utils.js");
+const { setupWSConnection, setPersistence } = require("./utils.js");
+
+const persistence = require("./persistence");
+
+setPersistence(persistence);
 
 const port = process.env.PORT || 1234;
 

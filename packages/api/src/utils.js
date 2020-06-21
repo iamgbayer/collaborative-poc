@@ -63,16 +63,19 @@ class WSSharedDoc extends Y.Doc {
     super({ gc: gcEnabled });
     this.name = name;
     this.mux = mutex.createMutex();
+
     /**
      * Maps from conn to set of controlled user ids. Delete all user ids from awareness when this conn is closed
      * @type {Map<Object, Set<number>>}
      */
     this.conns = new Map();
+
     /**
      * @type {awarenessProtocol.Awareness}
      */
     this.awareness = new awarenessProtocol.Awareness(this);
     this.awareness.setLocalState(null);
+
     /**
      * @param {{ added: Array<number>, updated: Array<number>, removed: Array<number> }} changes
      * @param {Object | null} conn Origin is the connection that made the change
@@ -207,13 +210,12 @@ exports.setupWSConnection = (
     const doc = new WSSharedDoc(docName);
     doc.gc = gc;
 
-    console.log("persistence", persistence);
-
     if (persistence !== null) {
       persistence.bindState(docName, doc);
     }
 
     docs.set(docName, doc);
+
     return doc;
   });
 

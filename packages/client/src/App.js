@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as Y from "yjs";
+
 import { WebsocketProvider } from "y-websocket";
 import {
   ySyncPlugin,
@@ -33,7 +34,7 @@ function App() {
     );
 
     provider.awareness.setLocalStateField("user", {
-      name: `Guilherme ${Math.random().toString(36).substring(7)}`,
+      name: Math.random().toString(36).substring(7),
       color: randomColor(),
     });
 
@@ -56,7 +57,7 @@ function App() {
     return () => view.current.destroy();
   }, []);
 
-  return <div ref={container}></div>;
+  return <div ref={container} />;
 }
 
 export default App;
